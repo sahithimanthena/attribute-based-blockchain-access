@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Block Chain</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+<!--    <link rel="stylesheet" href="static/css/all.min.css" />-->
+               <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}" />
+
+<!--    <link rel="stylesheet" href="static/css/bootstrap.min.css" />-->
+         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+
+<!--    <link rel="stylesheet" href="static/css/templatemo-style.css" />-->
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-style.css') }}" />
+
+<!--
+Parallo Template
+https://templatemo.com/tm-534-parallo
+-->
+  </head>
+  <body>
+    <div class="parallax-window" data-parallax="scroll" data-image-src="{{ url_for('static', filename='img/3.jpg')}}">
+<!--        <img src="{{ url_for('static', filename='img/3.jpg') }}">-->
+      <div class="container-fluid">
+        <b><h1 style="color:black">TABE-DAC: Efficient Traceable Attribute-Based
+Encryption Scheme &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With Dynamic Access
+Control Based on Blockchain</h1></b>
+       <br><br><br><br><br>
+
+<center>	<div class="col-md-8">
+
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+				<b><h6><div class="alert alert-{{ category }}">
+						{{ message }}
+					</div></h6></b>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+		{% block content %} {% endblock %}
+
+
+     </div></center>
+
+
+               <div class="col-md-8">
+		{% if msg!=null:
+
+%}
+ <center style="width: 905px;!important"><textarea cols="50" rows="10"  readonly >{{ msg }}</textarea>
+
+                                     <input type="hidden" id="source" value="{{ msg }}">     <br>
+
+     <button type="button" id="save" title="Save as text file">Download</button>
+
+{% endif%}
+
+                    <script type="text/javascript">
+        // when document is ready
+        document.getElementById("save").onclick = function() {
+            // when clicked the button
+            var content = document.getElementById('source').value;
+            // a [save as] dialog will be shown
+            window.open("data:application/txt," + encodeURIComponent(content), "_self");
+        }
+    </script>
+
+</center><br>
+<!--            <a href="vfiles">Go Back</a>-->
+                     <center style="width: 1005px; height:0px; !important"> <a href="{{url_for('index')}}" style="color:red" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0">Home Page...</a>
+                      <a href="{{url_for('down')}}" class="waves-effect btn-large btn-large-white px-4 black-text rounded-0" style="color:red">Previous Page...</a>
+                 </center>
+	<br>
+		</div>
+
+        <!-- Call to Action -->
+
+
+        <!-- Page footer -->
+
+      <!-- .container-fluid -->
+    </div>
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/parallax.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/slick/slick.min.js"></script>
+    <script>
+        $(function(){
+            $('.tabgroup > div').hide();
+            $('.tabgroup > div:first-of-type').show();
+            $('.tabs a').click(function(e){
+              e.preventDefault();
+              var $this = $(this),
+                  tabgroup = '#'+$this.parents('.tabs').data('tabgroup'),
+                  others = $this.closest('li').siblings().children('a'),
+                  target = $this.attr('href');
+              others.removeClass('active');
+              $this.addClass('active');
+              $(tabgroup).children('div').hide();
+              $(target).show();
+
+              // Scroll to tab content (for mobile)
+              if($(window).width() < 992) {
+                  $('html, body').animate({
+                      scrollTop: $("#first-tab-group").offset().top
+                  }, 200);
+              }
+            })
+
+            $('.tm-carousel').slick({
+                dots: true,
+                  infinite: false,
+                  arrows: false,
+                  speed: 300,
+                  slidesToShow: 3,
+                  slidesToScroll: 2,
+                  responsive: [
+                    {
+                      breakpoint: 1024,
+                      settings: {
+                          arrows: false,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                      }
+                    },
+                    {
+                      breakpoint: 600,
+                      settings: {
+                          arrows: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                      breakpoint: 480,
+                      settings: {
+                          arrows: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                  ]
+            });
+        });
+    </script>
+  </body>
+</html>

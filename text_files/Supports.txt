@@ -1,0 +1,6 @@
+TK14570 - 3:00 exec - completed
+TK15589 - 10:30 Expl - Completed
+TK14211 - Errors : 10
+TK22865 - Execution : 5
+TK20238 - call - completed -student need the project in AWS
+TK14896 - offline - completed
